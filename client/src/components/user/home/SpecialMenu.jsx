@@ -9,8 +9,7 @@ const SpecialMenu = () => {
   useEffect(() => {
     const fetchSpecialMenu = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/menu`);
-
+        const res = await fetch("http://localhost:5000/api/menu");
         const data = await res.json();
 
         // ✅ FIXED: backend returns { data: [...] }

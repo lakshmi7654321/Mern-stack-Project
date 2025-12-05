@@ -5,8 +5,7 @@ const SpecialChefs = () => {
   const [chefs, setChefs] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const API_URL = `${import.meta.env.VITE_API_BASE_URL}/chefs`;
-
+  const API_URL = "http://localhost:5000/api/chefs";
   const chefsPerPage = 3;
 
   useEffect(() => {

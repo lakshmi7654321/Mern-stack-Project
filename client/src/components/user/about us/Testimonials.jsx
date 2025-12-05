@@ -4,8 +4,7 @@ const Testimonials = () => {
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
 
-const API_URL = `${import.meta.env.VITE_API_BASE_URL}/partners`;
-
+  const API_URL = "http://localhost:5000/api/partners";
 
   useEffect(() => {
     const fetchPartners = async () => {

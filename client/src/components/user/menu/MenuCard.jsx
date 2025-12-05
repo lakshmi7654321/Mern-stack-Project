@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ShoppingCart, Star } from "lucide-react";
 import Cookies from "js-cookie";
 
-const REVIEW_API = `${import.meta.env.VITE_API_BASE_URL}/reviews`;
-
+const REVIEW_API = "http://localhost:5000/api/reviews";
 
 const MenuCard = ({ item, onSelect, onAddToCart }) => {
   const [rating, setRating] = useState(0); // average rating from backend

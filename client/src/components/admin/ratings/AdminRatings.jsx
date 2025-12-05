@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Star, MessageSquare } from "lucide-react";
 import Cookies from "js-cookie";
 
-const REVIEWS_API  = `${import.meta.env.VITE_API_BASE_URL}/reviews`;
+const REVIEWS_API = "http://localhost:5000/api/reviews"; // Admin route
 
 const AdminRatings = () => {
   const [reviews, setReviews] = useState([]);

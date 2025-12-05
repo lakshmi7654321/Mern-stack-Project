@@ -8,8 +8,7 @@ const CardsSection = () => {
   useEffect(() => {
     const fetchPopular = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/menu`);
-
+        const res = await fetch("http://localhost:5000/api/menu");
         const result = await res.json();
 
         const allItems = result.data || [];

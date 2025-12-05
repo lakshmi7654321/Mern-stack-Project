@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, MapPin, CreditCard, IndianRupee, User } from "lucide-react";
 import Cookies from "js-cookie";
-const ORDERS_API_URL = `${import.meta.env.VITE_API_BASE_URL}/orders`;
 
+const ORDERS_API_URL = "http://localhost:5000/api/orders";
 
 const OrderDetails = () => {
   const navigate = useNavigate();

@@ -22,7 +22,7 @@ const NavBar = () => {
     if (!token) return;
 
     try {
-const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
+      const res = await fetch("http://localhost:5000/api/auth/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

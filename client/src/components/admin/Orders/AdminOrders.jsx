@@ -3,8 +3,8 @@ import { ShoppingCart, Clock, CheckCircle, Truck, BadgeCheck } from "lucide-reac
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const ORDERS_API = `${import.meta.env.VITE_API_BASE_URL}/orders`;
-const USERS_API  = `${import.meta.env.VITE_API_BASE_URL}/auth/users`;
+const ORDERS_API = "http://localhost:5000/api/orders";
+const USERS_API = "http://localhost:5000/api/auth/users";
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);

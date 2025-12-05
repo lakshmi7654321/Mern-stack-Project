@@ -3,11 +3,9 @@ import { ArrowLeft, CreditCard, MapPin, Plus, Minus, Trash2 } from "lucide-react
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-const CART_API_URL     = `${BASE_URL}/cart`;
-const PLACE_ORDER_URL  = `${BASE_URL}/orders`;
-const PROFILE_URL      = `${BASE_URL}/auth/profile`;
+const CART_API_URL = "http://localhost:5000/api/cart";
+const PLACE_ORDER_URL = "http://localhost:5000/api/orders";
+const PROFILE_URL = "http://localhost:5000/api/auth/profile";
 
 const CheckoutSection = () => {
   const navigate = useNavigate();
