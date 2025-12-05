@@ -8,14 +8,16 @@ import {
   UsersIcon,
 } from "lucide-react";
 import Cookies from "js-cookie";
+const BASE_URL = import.meta.env.VITE_API_URL;  // use .env from now
 
-const MENU_API = "http://localhost:5000/api/menu";
-const ORDERS_API = "http://localhost:5000/api/orders";
-const CONTACTS_API = "http://localhost:5000/api/contacts";
-const USERS_API = "http://localhost:5000/api/auth/users";
-const CHEF_API = "http://localhost:5000/api/chefs";
-const PARTNER_API = "http://localhost:5000/api/partners";
-const REVIEWS_API = "http://localhost:5000/api/reviews";
+const MENU_API = `${BASE_URL}/api/menu`;
+const ORDERS_API = `${BASE_URL}/api/orders`;
+const CONTACTS_API = `${BASE_URL}/api/contacts`;
+const USERS_API = `${BASE_URL}/api/auth/users`;
+const CHEF_API = `${BASE_URL}/api/chefs`;
+const PARTNER_API = `${BASE_URL}/api/partners`;
+const REVIEWS_API = `${BASE_URL}/api/reviews`;
+
 
 const Dashboard = () => {
   const [menuCount, setMenuCount] = useState(0);

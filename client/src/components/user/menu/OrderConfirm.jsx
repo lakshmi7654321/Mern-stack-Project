@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const ORDER_API_URL = "http://localhost:5000/api/orders";
-const REVIEW_API_URL = "http://localhost:5000/api/reviews";
+const ORDER_API_URL  = `${BASE_URL}/orders`;
+const REVIEW_API_URL = `${BASE_URL}/reviews`;
+
 
 const OrderConfirm = () => {
   const { orderId } = useParams();

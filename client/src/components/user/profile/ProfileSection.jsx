@@ -21,9 +21,12 @@ const ProfileSection = ({ onLogout }) => {
   const loggedUser = userCookie ? JSON.parse(userCookie) : null;
   const loggedUserId = loggedUser?._id || loggedUser?.id;
 
-  const PROFILE_URL = "http://localhost:5000/api/auth/profile";
-  const ORDERS_URL = "http://localhost:5000/api/orders";
-  const CONTACTS_URL = "http://localhost:5000/api/contacts";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const PROFILE_URL  = `${BASE_URL}/auth/profile`;
+const ORDERS_URL   = `${BASE_URL}/orders`;
+const CONTACTS_URL = `${BASE_URL}/contacts`;
+
 
   // Fetch profile
   const fetchProfile = async () => {

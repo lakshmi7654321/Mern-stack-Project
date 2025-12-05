@@ -9,7 +9,8 @@ const ContactSection = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const API_URL = "http://localhost:5000/api/contacts"; 
+  const API_URL = `${import.meta.env.VITE_API_BASE_URL}/contacts`;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

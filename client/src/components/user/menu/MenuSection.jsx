@@ -20,7 +20,8 @@ const MenuSection = () => {
   // ================= FETCH MENU =================
   const fetchMenu = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/menu");
+     const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/menu`);
+
       if (!res.ok) throw new Error("Failed to fetch menu");
       const data = await res.json();
       setAllItems(data.data || []);

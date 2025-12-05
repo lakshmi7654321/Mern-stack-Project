@@ -3,8 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, User, ShoppingBag, MapPin, Calendar, IndianRupee } from "lucide-react";
 import Cookies from "js-cookie";
 
-const ORDERS_API = "http://localhost:5000/api/orders";
-const USERS_API = "http://localhost:5000/api/auth/users";
+const ORDERS_API = `${import.meta.env.VITE_API_BASE_URL}/orders`;
+const USERS_API  = `${import.meta.env.VITE_API_BASE_URL}/auth/users`;
+
 
 const OrderView = () => {
   const { id } = useParams();

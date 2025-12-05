@@ -3,8 +3,10 @@ import { Package, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const ORDERS_API_URL = "http://localhost:5000/api/orders";
-const MENU_API_URL = "http://localhost:5000/api/menu";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const ORDERS_API_URL = `${BASE_URL}/orders`;
+const MENU_API_URL   = `${BASE_URL}/menu`;
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);

@@ -3,8 +3,11 @@ import { Trash2, Edit2, Utensils, Star, ListChecks } from "lucide-react";
 import MenuAddForm from "./AddMenuForm";
 import Cookies from "js-cookie";
 
-const API_URL = "http://localhost:5000/api/menu";
-const REVIEWS_API = "http://localhost:5000/api/reviews";
+const BASE_URL = import.meta.env.VITE_API_URL;  // backend URL comes from .env
+
+const API_URL = `${BASE_URL}/api/menu`;
+const REVIEWS_API = `${BASE_URL}/api/reviews`;
+
 
 const AdminMenu = () => {
   const [menuItems, setMenuItems] = useState([]);
