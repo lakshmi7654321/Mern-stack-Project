@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, MapPin, CreditCard, IndianRupee, User } from "lucide-react";
 import Cookies from "js-cookie";
 
-const ORDERS_API_URL = "http://localhost:5000/api/orders";
+const ORDERS_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
 
 const OrderDetails = () => {
   const navigate = useNavigate();

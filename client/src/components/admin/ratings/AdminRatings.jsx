@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Star, MessageSquare } from "lucide-react";
 import Cookies from "js-cookie";
 
-const REVIEWS_API = "http://localhost:5000/api/reviews"; // Admin route
+const REVIEWS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/reviews";
+ // Admin route
 
 const AdminRatings = () => {
   const [reviews, setReviews] = useState([]);

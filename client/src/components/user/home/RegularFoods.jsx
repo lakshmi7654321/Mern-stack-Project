@@ -9,7 +9,7 @@ const RegularFood = () => {
   useEffect(() => {
     const fetchRegular = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/menu");
+        const res = await fetch("https://mern-stack-project-1-ahdo.onrender.com/api/menu");
         const result = await res.json();
 
         // Backend returns { success, data: [] }

@@ -3,8 +3,9 @@ import { ShoppingCart, Clock, CheckCircle, Truck, BadgeCheck } from "lucide-reac
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const ORDERS_API = "http://localhost:5000/api/orders";
-const USERS_API = "http://localhost:5000/api/auth/users";
+const ORDERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const USERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/auth/users";
+
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);

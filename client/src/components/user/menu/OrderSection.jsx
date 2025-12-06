@@ -3,7 +3,9 @@ import { Trash2, ArrowLeft, Plus, Minus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const CART_API_URL = "http://localhost:5000/api/cart";
+const CART_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/cart";
+
+
 
 const OrderSection = () => {
   const [cartItems, setCartItems] = useState([]); // FIXED NAME

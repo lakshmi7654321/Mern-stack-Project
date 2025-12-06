@@ -5,7 +5,8 @@ const SpecialChefs = () => {
   const [chefs, setChefs] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const API_URL = "http://localhost:5000/api/chefs";
+  const API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/chefs";
+
   const chefsPerPage = 3;
 
   useEffect(() => {

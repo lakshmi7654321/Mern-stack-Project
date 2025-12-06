@@ -20,9 +20,12 @@ const AdminUsers = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/users", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        "https://mern-stack-project-1-ahdo.onrender.com/api/auth/users",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!res.ok) {
         const errData = await res.json();
@@ -48,7 +51,7 @@ const AdminUsers = () => {
     if (!token) return;
     try {
       const res = await fetch(
-        `http://localhost:5000/api/auth/users/${id}/status`,
+        `https://mern-stack-project-1-ahdo.onrender.com/api/auth/users/${id}/status`,
         {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}` },
@@ -69,10 +72,13 @@ const AdminUsers = () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/users/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://mern-stack-project-1-ahdo.onrender.com/api/auth/users/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to delete user");
       fetchUsers(); // refresh list

@@ -9,13 +9,14 @@ import {
 } from "lucide-react";
 import Cookies from "js-cookie";
 
-const MENU_API = "http://localhost:5000/api/menu";
-const ORDERS_API = "http://localhost:5000/api/orders";
-const CONTACTS_API = "http://localhost:5000/api/contacts";
-const USERS_API = "http://localhost:5000/api/auth/users";
-const CHEF_API = "http://localhost:5000/api/chefs";
-const PARTNER_API = "http://localhost:5000/api/partners";
-const REVIEWS_API = "http://localhost:5000/api/reviews";
+const MENU_API = "https://mern-stack-project-1-ahdo.onrender.com/api/menu";
+const ORDERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const CONTACTS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/contacts";
+const USERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/auth/users";
+const CHEF_API = "https://mern-stack-project-1-ahdo.onrender.com/api/chefs";
+const PARTNER_API = "https://mern-stack-project-1-ahdo.onrender.com/api/partners";
+const REVIEWS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/reviews";
+
 
 const Dashboard = () => {
   const [menuCount, setMenuCount] = useState(0);

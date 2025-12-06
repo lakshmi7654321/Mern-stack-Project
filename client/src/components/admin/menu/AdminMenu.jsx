@@ -3,8 +3,8 @@ import { Trash2, Edit2, Utensils, Star, ListChecks } from "lucide-react";
 import MenuAddForm from "./AddMenuForm";
 import Cookies from "js-cookie";
 
-const API_URL = "http://localhost:5000/api/menu";
-const REVIEWS_API = "http://localhost:5000/api/reviews";
+const API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/menu";
+const REVIEWS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/reviews";
 
 const AdminMenu = () => {
   const [menuItems, setMenuItems] = useState([]);

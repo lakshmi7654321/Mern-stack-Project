@@ -3,8 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, User, ShoppingBag, MapPin, Calendar, IndianRupee } from "lucide-react";
 import Cookies from "js-cookie";
 
-const ORDERS_API = "http://localhost:5000/api/orders";
-const USERS_API = "http://localhost:5000/api/auth/users";
+const ORDERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const USERS_API = "https://mern-stack-project-1-ahdo.onrender.com/api/auth/users";
+
 
 const OrderView = () => {
   const { id } = useParams();

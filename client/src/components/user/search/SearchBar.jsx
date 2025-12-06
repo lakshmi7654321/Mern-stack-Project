@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const MENU_API = "http://localhost:5000/api/menu";
+const MENU_API = "https://mern-stack-project-1-ahdo.onrender.com/api/menu";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");

@@ -22,7 +22,7 @@ const NavBar = () => {
     if (!token) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/profile", {
+      const res = await fetch("https://mern-stack-project-1-ahdo.onrender.com/api/auth/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
 

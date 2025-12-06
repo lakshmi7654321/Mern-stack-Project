@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Star } from "lucide-react";
 import Cookies from "js-cookie";
 
-const ORDER_API_URL = "http://localhost:5000/api/orders";
-const REVIEW_API_URL = "http://localhost:5000/api/reviews";
+const ORDER_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const REVIEW_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/reviews";
 
 const ItemRatings = () => {
   const { orderId } = useParams();

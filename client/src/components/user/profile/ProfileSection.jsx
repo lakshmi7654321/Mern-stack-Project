@@ -21,9 +21,9 @@ const ProfileSection = ({ onLogout }) => {
   const loggedUser = userCookie ? JSON.parse(userCookie) : null;
   const loggedUserId = loggedUser?._id || loggedUser?.id;
 
-  const PROFILE_URL = "http://localhost:5000/api/auth/profile";
-  const ORDERS_URL = "http://localhost:5000/api/orders";
-  const CONTACTS_URL = "http://localhost:5000/api/contacts";
+const PROFILE_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/auth/profile";
+const ORDERS_URL  = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const CONTACTS_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/contacts";
 
   // Fetch profile
   const fetchProfile = async () => {

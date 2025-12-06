@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Trash2, Edit2, Users, UserPlus, ListChecks } from "lucide-react";
 import AddPeopleForm from "./AddPeopleForm";
 
-const CHEF_API = "http://localhost:5000/api/chefs";
-const PARTNER_API = "http://localhost:5000/api/partners";
+const CHEF_API = "https://mern-stack-project-1-ahdo.onrender.com/api/chefs";
+const PARTNER_API = "https://mern-stack-project-1-ahdo.onrender.com/api/partners";
+
 
 const AdminPeople = () => {
   const [chefs, setChefs] = useState([]);

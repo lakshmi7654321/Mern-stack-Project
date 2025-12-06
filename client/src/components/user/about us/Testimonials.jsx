@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 const Testimonials = () => {
   const [partners, setPartners] = useState([]);
   const [loading, setLoading] = useState(true);
+const API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/partners";
 
-  const API_URL = "http://localhost:5000/api/partners";
 
   useEffect(() => {
     const fetchPartners = async () => {

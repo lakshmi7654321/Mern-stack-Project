@@ -9,7 +9,7 @@ const SpecialMenu = () => {
   useEffect(() => {
     const fetchSpecialMenu = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/menu");
+        const res = await fetch("https://mern-stack-project-1-ahdo.onrender.com/api/menu");
         const data = await res.json();
 
         // ✅ FIXED: backend returns { data: [...] }

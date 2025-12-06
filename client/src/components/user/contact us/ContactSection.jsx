@@ -8,8 +8,8 @@ const ContactSection = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+const API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/contacts";
 
-  const API_URL = "http://localhost:5000/api/contacts"; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();

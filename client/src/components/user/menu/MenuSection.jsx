@@ -5,6 +5,10 @@ import Cookies from "js-cookie";
 import MenuCard from "./MenuCard";
 import ItemPopup from "./ItemPopup";
 
+// ================= API URLs =================
+const MENU_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/menu";
+const CART_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/cart";
+
 const MenuSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("North Indian");
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +24,7 @@ const MenuSection = () => {
   // ================= FETCH MENU =================
   const fetchMenu = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/menu");
+      const res = await fetch(MENU_API_URL);
       if (!res.ok) throw new Error("Failed to fetch menu");
       const data = await res.json();
       setAllItems(data.data || []);
@@ -33,7 +37,7 @@ const MenuSection = () => {
   const fetchCartCount = async () => {
     if (!token) return; // user not logged in
     try {
-      const res = await fetch("http://localhost:5000/api/cart", {
+      const res = await fetch(CART_API_URL, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.status === 401) return navigate("/login"); // redirect if unauthorized
@@ -73,7 +77,7 @@ const MenuSection = () => {
     if (!token) return navigate("/login"); // redirect if not logged in
 
     try {
-      const res = await fetch("http://localhost:5000/api/cart", {
+      const res = await fetch(CART_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

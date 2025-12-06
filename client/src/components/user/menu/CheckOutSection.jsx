@@ -3,9 +3,9 @@ import { ArrowLeft, CreditCard, MapPin, Plus, Minus, Trash2 } from "lucide-react
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const CART_API_URL = "http://localhost:5000/api/cart";
-const PLACE_ORDER_URL = "http://localhost:5000/api/orders";
-const PROFILE_URL = "http://localhost:5000/api/auth/profile";
+const CART_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/cart";
+const PLACE_ORDER_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const PROFILE_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/auth/profile";
 
 const CheckoutSection = () => {
   const navigate = useNavigate();

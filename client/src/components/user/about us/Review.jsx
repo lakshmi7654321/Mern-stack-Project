@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api/reviews/overall"; // Public overall reviews
+const API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/reviews/overall";
+ // Public overall reviews
 const reviewsPerPage = 3;
 
 const Review = () => {

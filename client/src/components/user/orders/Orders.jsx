@@ -3,8 +3,8 @@ import { Package, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const ORDERS_API_URL = "http://localhost:5000/api/orders";
-const MENU_API_URL = "http://localhost:5000/api/menu";
+const ORDERS_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/orders";
+const MENU_API_URL = "https://mern-stack-project-1-ahdo.onrender.com/api/menu";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
