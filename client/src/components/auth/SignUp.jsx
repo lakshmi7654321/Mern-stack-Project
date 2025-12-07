@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
+// Use environment variable for backend URL
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const SigninPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -27,11 +30,19 @@ const SigninPage = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://mern-stack-project-1-ahdo.onrender.com/api/auth/signup", {
+      const res = await fetch(`${BACKEND_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // important for cookies
         body: JSON.stringify(formData),
       });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        setMsg(errData.message || "Signup failed");
+        setLoading(false);
+        return;
+      }
 
       const data = await res.json();
 
@@ -41,7 +52,7 @@ const SigninPage = () => {
         return;
       }
 
-      // Save JWT and ROLE
+      // Save JWT and role in cookies
       Cookies.set("token", data.token, { expires: 7 });
       Cookies.set("role", data.user.role, { expires: 7 });
 

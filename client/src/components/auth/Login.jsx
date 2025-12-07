@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
+// Use environment variable for backend URL
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,11 +18,19 @@ const Login = () => {
     setLoading(true);
 
     try {
-       const res = await fetch("https://mern-stack-project-1-ahdo.onrender.com/api/auth/login",{
+      const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // allow cookies
         body: JSON.stringify({ email, password }),
       });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        setMsg(errData.message || "Login failed");
+        setLoading(false);
+        return;
+      }
 
       const data = await res.json();
 
@@ -30,7 +41,7 @@ const Login = () => {
         return;
       }
 
-      // Save JWT and user role in cookies
+      // Save token and role in cookies
       Cookies.set("token", data.token, { expires: 7 });
       Cookies.set("role", data.user.role, { expires: 7 });
 
@@ -41,8 +52,8 @@ const Login = () => {
         navigate("/", { replace: true });
       }
     } catch (err) {
-      console.error(err);
-      setMsg("Server error. Try again later.");
+      console.error("Login error:", err);
+      setMsg("Server error. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -62,8 +73,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full p-3 border border-gray-300 rounded-xl text-lg
-                       focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+            className="w-full p-3 border border-gray-300 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
           />
 
           <input
@@ -72,17 +82,15 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full p-3 border border-gray-300 rounded-xl text-lg
-                       focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+            className="w-full p-3 border border-gray-300 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-green-600 text-white p-3 rounded-xl text-lg font-semibold
-                        hover:bg-green-700 transition ${
-                          loading ? "opacity-70 cursor-not-allowed" : ""
-                        }`}
+            className={`w-full bg-green-600 text-white p-3 rounded-xl text-lg font-semibold hover:bg-green-700 transition ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -90,17 +98,12 @@ const Login = () => {
 
         <p className="mt-6 text-center text-gray-700">
           Don't have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-green-700 font-bold hover:underline"
-          >
+          <Link to="/signup" className="text-green-700 font-bold hover:underline">
             Sign Up
           </Link>
         </p>
 
-        {msg && (
-          <p className="mt-4 text-center text-red-600 font-medium">{msg}</p>
-        )}
+        {msg && <p className="mt-4 text-center text-red-600 font-medium">{msg}</p>}
       </div>
     </div>
   );
