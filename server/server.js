@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-// Load .env
+// Load environment variables
 dotenv.config();
 
 // Import Routes
@@ -19,15 +19,30 @@ import cartRoutes from "./routes/cartRoutes.js";
 const app = express();
 
 // ======== Middleware ========
-// Set CORS correctly for credentials
+// CORS setup for localhost + deployed frontends
+const allowedOrigins = [
+  "http://localhost:5173", // local dev
+  "https://mern-stack-project-2-9hqb.onrender.com", // deployed frontend
+  "https://mern-stack-project-1-ahdo.onrender.com", // backend itself
+  "https://fullstackproject23.netlify.app", // optional frontend
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // your React app origin
-    credentials: true,               // allow cookies/auth
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow Postman or server-to-server
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked for origin: ${origin}`));
+      }
+    },
+    credentials: true, // allow cookies/auth headers
   })
 );
 
-// Parse JSON and URL-encoded bodies
+// ======== Body Parsing ========
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -42,10 +57,8 @@ app.get("/", (req, res) => {
   res.send("Backend running...");
 });
 
-// ======== Auth Route FIRST (important for sessions) ========
+// ======== API Routes ========
 app.use("/api/auth", authRoutes);
-
-// ======== Other Routes ========
 app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contacts", contactRoutes);

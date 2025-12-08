@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
+// ==============================
+// PROTECT ROUTE MIDDLEWARE
+// ==============================
 export const protect = async (req, res, next) => {
-  let token = null;
+  let token;
 
-  // Check Bearer token
+  // Check for Bearer token in Authorization header
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -12,7 +15,6 @@ export const protect = async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
   }
 
-  // No token found
   if (!token) {
     return res
       .status(403)
@@ -23,18 +25,18 @@ export const protect = async (req, res, next) => {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Find user in DB
+    // Find user in DB and exclude password
     req.user = await User.findById(decoded.id).select("-password");
+
     if (!req.user) {
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
     }
 
-    next();
+    next(); // user is valid, proceed
   } catch (err) {
     console.error("Auth Middleware Error:", err);
-
     return res.status(401).json({
       success: false,
       message: "Token is invalid or expired",
@@ -43,11 +45,11 @@ export const protect = async (req, res, next) => {
 };
 
 // ==============================
-// ADMIN CHECK
+// ADMIN CHECK MIDDLEWARE
 // ==============================
 export const admin = (req, res, next) => {
   if (req.user && req.user.role === "admin") {
-    return next();
+    return next(); // user is admin, proceed
   }
 
   return res.status(403).json({

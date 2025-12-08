@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-// Use environment variable for backend URL
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const SigninPage = () => {
@@ -33,35 +32,24 @@ const SigninPage = () => {
       const res = await fetch(`${BACKEND_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // important for cookies
+        credentials: "include",
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) {
-        const errData = await res.json();
-        setMsg(errData.message || "Signup failed");
-        setLoading(false);
-        return;
-      }
-
       const data = await res.json();
 
-      if (!data.success || !data.token || !data.user) {
+      if (!res.ok || !data.success || !data.token || !data.user) {
         setMsg(data.message || "Signup failed");
         setLoading(false);
         return;
       }
 
       // Save JWT and role in cookies
-      Cookies.set("token", data.token, { expires: 7 });
-      Cookies.set("role", data.user.role, { expires: 7 });
+      Cookies.set("token", data.token, { expires: 7, sameSite: "Lax" });
+      Cookies.set("role", data.user.role, { expires: 7, sameSite: "Lax" });
 
       // Redirect based on role
-      if (data.user.role === "admin") {
-        navigate("/admin/dashboard", { replace: true });
-      } else {
-        navigate("/", { replace: true });
-      }
+      navigate(data.user.role === "admin" ? "/admin/dashboard" : "/", { replace: true });
     } catch (err) {
       console.error("Signup error:", err);
       setMsg("Server error. Try again later.");
@@ -69,6 +57,16 @@ const SigninPage = () => {
       setLoading(false);
     }
   };
+
+  const fields = [
+    { name: "name", type: "text", placeholder: "Full Name" },
+    { name: "email", type: "email", placeholder: "Email Address" },
+    { name: "password", type: "password", placeholder: "Password" },
+    { name: "phone", type: "text", placeholder: "Phone" },
+    { name: "address", type: "text", placeholder: "Address" },
+    { name: "city", type: "text", placeholder: "City" },
+    { name: "state", type: "text", placeholder: "State" },
+  ];
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-green-50 px-4">
@@ -78,15 +76,7 @@ const SigninPage = () => {
         </h2>
 
         <form onSubmit={handleSignup} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { name: "name", type: "text", placeholder: "Full Name" },
-            { name: "email", type: "email", placeholder: "Email Address" },
-            { name: "password", type: "password", placeholder: "Password" },
-            { name: "phone", type: "text", placeholder: "Phone" },
-            { name: "address", type: "text", placeholder: "Address" },
-            { name: "city", type: "text", placeholder: "City" },
-            { name: "state", type: "text", placeholder: "State" },
-          ].map((field) => (
+          {fields.map((field) => (
             <input
               key={field.name}
               type={field.type}
@@ -117,9 +107,7 @@ const SigninPage = () => {
           </Link>
         </p>
 
-        {msg && (
-          <p className="mt-4 text-center text-base text-red-600 font-medium">{msg}</p>
-        )}
+        {msg && <p className="mt-4 text-center text-base text-red-600 font-medium">{msg}</p>}
       </div>
     </div>
   );

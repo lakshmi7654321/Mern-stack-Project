@@ -14,7 +14,7 @@ import { protect, admin } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// ================= MULTER FOR FILE UPLOADS =================
+// ================= MULTER SETUP =================
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -26,13 +26,9 @@ router.post("/login", login);
 router.get("/profile", protect, getProfile);
 router.put("/profile", protect, updateProfile);
 
-// Avatar upload route must have multer upload BEFORE controller
-router.post(
-  "/profile/avatar",
-  protect,
-  upload.single("avatar"),
-  uploadAvatar
-);
+// Avatar upload route
+// Note: multer middleware must come BEFORE the controller
+router.post("/profile/avatar", protect, upload.single("avatar"), uploadAvatar);
 
 // ================= ADMIN ONLY ROUTES =================
 router.get("/users", protect, admin, getAllUsers);
